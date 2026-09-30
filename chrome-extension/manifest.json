@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "ImgLy Element Picker & Live Preview",
+  "version": "1.1",
+  "description": "Pick a DOM element, edit its crop in the ImgLy visual editor, and preview results live on the website.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open ImgLy Picker"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:3000/*",
+        "http://127.0.0.1:3000/*"
+      ],
+      "js": ["editor-bridge.js"]
+    }
+  ],
+  "externally_connectable": {
+    "matches": [
+      "http://localhost:3000/*",
+      "http://127.0.0.1:3000/*"
+    ]
+  }
+}
